@@ -43,7 +43,9 @@ def main() -> None:
     results = {
         "development_log_index": write_if_missing(docs / "development-log" / "index.md", LOG_INDEX),
         "rules_index": write_if_missing(docs / "rules" / "index.md", RULE_INDEX),
+        "goals_directory": "created" if not (docs / "goals").exists() else "kept",
     }
+    (docs / "goals").mkdir(parents=True, exist_ok=True)
     print(results)
 
 
